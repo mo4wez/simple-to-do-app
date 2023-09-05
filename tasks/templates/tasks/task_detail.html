@@ -11,5 +11,6 @@
         <p>Status: ✅</p>
         {% else %}
         <p>Status: ❌</p>
-{% endif %}
+    {% endif %}
+    <a href="{% url 'task_update' task.id %}">Edit</a>
 {% endblock content %}

@@ -15,3 +15,13 @@ class TaskDetailView(generic.DetailView):
     template_name = 'tasks/task_detail.html'
     context_object_name = 'task'
 
+
+class TaskCreateView(generic.CreateView):
+    model = Task
+    template_name = 'tasks/task_create.html'
+    fields = '__all__'
+
+class TaskUpdateView(generic.UpdateView):
+    model = Task
+    template_name = 'tasks/task_update.html'
+    fields = '__all__'
