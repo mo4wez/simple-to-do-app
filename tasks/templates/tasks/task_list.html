@@ -3,15 +3,20 @@
 {% block page_title %}Tasks{% endblock page_title %}
 
 {% block content %}
-    <h1>Tasks List</h1>
-    <br>
-    {% for task in tasks %}
-        <h3>Task: {{task.title}}</h3>
-        {% if task.is_complete %}
-            <p>Status: ✅</p>
-            {% else %}
-            <p>Status: ❌</p>
-        {% endif %}
-        <a href="{{task.get_absolute_url}}">more...</a>
-    {% endfor %}
+    <table>
+        <tr>
+            <th>Tasks</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{task.title}}</td>
+                <td><a href="{{task.get_absolute_url}}">View</a></td>
+                <td><a href="{% url 'task_update' task.id %}">Edit</a></td>
+                <td><a href="{% url 'task_delete' task.id %}">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock content %}
