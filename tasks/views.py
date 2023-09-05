@@ -1,4 +1,6 @@
 from typing import Any, Dict
+from django.forms.models import BaseModelForm
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
@@ -27,7 +29,11 @@ class TaskDetailView(generic.DetailView):
 class TaskCreateView(LoginRequiredMixin, generic.CreateView):
     model = Task
     template_name = 'tasks/task_create.html'
-    fields = '__all__'
+    fields = ['title', 'description', 'is_complete']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(TaskCreateView, self).form_valid(form)
 
 
 class TaskUpdateView(LoginRequiredMixin, UserPassesTestMixin,  generic.UpdateView):
