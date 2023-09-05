@@ -8,6 +8,7 @@
 <body>
     <a href="{% url 'tasks_list' %}">Tasks</a>
     {% if user.is_authenticated %}
+        <h5>Hi, {{user.username}}</h5>
         <a href="{% url 'task_create' %}">add a task</a>
         <a href="{% url 'account_logout' %}">Log out</a>
         {% else %}

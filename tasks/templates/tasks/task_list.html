@@ -17,6 +17,8 @@
                 <td><a href="{% url 'task_update' task.id %}">Edit</a></td>
                 <td><a href="{% url 'task_delete' task.id %}">Delete</a></td>
             </tr>
+        {% empty %}
+        <h3>No Tasks for you</h3>
         {% endfor %}
     </table>
 {% endblock content %}
