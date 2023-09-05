@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
 
-def task_list_view(request):
-    return render(request, 'tasks/task_list.html')
+from .models import Task
 
 
-def task_detail_view(request, pk):
-    pass
+class TaskListView(generic.ListView):
+    model = Task
+    template_name = 'tasks/tasks_list.html'
+    context_object_name = 'tasks'
+
