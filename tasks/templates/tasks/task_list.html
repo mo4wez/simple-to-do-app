@@ -7,13 +7,11 @@
     <br>
     {% for task in tasks %}
         <h3>Task: {{task.title}}</h3>
-        <p>{{task.description}}</p>
         {% if task.is_complete %}
             <p>Status: ✅</p>
             {% else %}
             <p>Status: ❌</p>
         {% endif %}
-        <p>author: {{task.user}}</p>
-        ---------
+        <a href="{{task.get_absolute_url}}">more...</a>
     {% endfor %}
 {% endblock content %}
