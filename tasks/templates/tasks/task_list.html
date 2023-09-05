@@ -3,7 +3,12 @@
 {% block page_title %}Tasks{% endblock page_title %}
 
 {% block content %}
-<h1>You have {{tasks.count}} tasks to do.</h1>
+
+{% if task_count %}
+    <h1>You have {{task_count}} tasks to complete.</h1>
+    {% else %}
+    <h1>all your tasks completely done.</h1>
+{% endif %}
 <table>
     <tr>
         <th>Tasks</th>
