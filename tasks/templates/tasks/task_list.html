@@ -3,22 +3,23 @@
 {% block page_title %}Tasks{% endblock page_title %}
 
 {% block content %}
-    <table>
-        <tr>
-            <th>Tasks</th>
-            <th></th>
-            <th></th>
-            <th></th>
+<h1>You have {{tasks.count}} tasks to do.</h1>
+<table>
+    <tr>
+        <th>Tasks</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    {% for task in tasks %}
         </tr>
-        {% for task in tasks %}
             <tr>
                 <td>{{task.title}}</td>
                 <td><a href="{{task.get_absolute_url}}">View</a></td>
                 <td><a href="{% url 'task_update' task.id %}">Edit</a></td>
                 <td><a href="{% url 'task_delete' task.id %}">Delete</a></td>
             </tr>
-        {% empty %}
+    {% empty %}
         <h3>No Tasks for you</h3>
-        {% endfor %}
+    {% endfor %}
     </table>
 {% endblock content %}

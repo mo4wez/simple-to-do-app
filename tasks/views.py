@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Task
 
 
-class TaskListView(generic.ListView):
+class TaskListView(LoginRequiredMixin, generic.ListView):
     model = Task
     template_name = 'tasks/task_list.html'
     context_object_name = 'tasks'

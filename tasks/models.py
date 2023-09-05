@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib.auth import get_user_model
 
 class Task(models.Model):
-    user = models.ForeignKey(to=get_user_model(), on_delete=models.CASCADE)
+    user = models.ForeignKey(to=get_user_model(), on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(max_length=120)
     description = models.TextField()
     is_complete = models.BooleanField(default=False)
