@@ -4,6 +4,11 @@
 
 {% block content %}
 
+<form method="GET">
+    <input type="text" name="search-area" value="{{search_input}}">
+    <input type="submit" value="Search">
+</form>
+
 {% if task_count %}
     <h1>You have {{task_count}} tasks to complete.</h1>
     {% else %}
