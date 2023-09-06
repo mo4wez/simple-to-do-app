@@ -3,20 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #fafafa;
+            font-family: 'Nunito', sans-serif;
+            padding-top: 50px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6
+            {
+                font-family: 'Railway', sans-serif;
+            }
+        
+        a,
+        p {
+            color: #4b5156;
+        }
+        
+        .container {
+            max-width: 550px;
+            margin: auto;
+            background-color: #fff;
+            -webkit-box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+            box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+        }
+    </style>
     <title>{% block page_title %}{% endblock page_title %}</title>
+
 </head>
 <body>
-    <a href="{% url 'tasks_list' %}">Tasks</a>
-    {% if user.is_authenticated %}
-        <h5>Hi, {{user.username}}</h5>
-        <a href="{% url 'task_create' %}">add a task</a>
-        <a href="{% url 'account_logout' %}">Log out</a>
-        {% else %}
-        <a href="{% url 'account_signup' %}">Sign Up</a>
-        <span>|</span>
-        <a href="{% url 'account_login' %}">Log In</a>
-    {% endif %}
-    
-    {% block content %}{% endblock content %}
+
+    <div class="container">
+        {% block content %}{% endblock content %}
+    </div>
 </body>
 </html>
